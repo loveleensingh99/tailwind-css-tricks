@@ -1,0 +1,177 @@
+Tailwind Css:
+
+
+Group hover:
+
+
+
+
+<div class="group w-fit bg-green-200 p-10">
+  <h1 class="group-hover:text-red-500">this is a sample text</h1>
+</div>
+
+
+
+
+
+Peer hover:
+//change the peer element bg color using peer.
+<div class="group peer w-fit bg-green-200 p-10">
+  <h1 class="group-hover:text-red-500">this is a sample text</h1>
+</div>
+
+
+<div class="w-fit bg-orange-300 p-10 peer-hover:bg-blue-200">
+  <h1 class="group-hover:text-red-500">this is a sample text</h1>
+</div>
+
+
+
+
+Peer with name:
+
+<div class="peer/tom group w-fit bg-green-200 p-10">
+  <h1 class="group-hover:text-red-500">this is a sample text</h1>
+</div>
+
+
+<div class="w-fit bg-orange-300 p-10 peer-hover:bg-blue-200">
+  <h1 class="group-hover:text-red-500">this is a sample text</h1>
+</div>
+
+
+<div class="peer/tom group w-fit bg-green-200 p-10">
+  <h1 class="group-hover:text-red-500">this is a sample text</h1>
+</div>
+
+
+<div class="w-fit bg-orange-300 p-10 peer-hover/tom:bg-blue-200">
+  <h1 class="group-hover:text-red-500">this is a sample text</h1>
+</div>
+
+
+
+
+
+
+Transition Property:
+
+
+<div class="w-fit bg-green-200 p-10">
+  <h1 class="ease text-red-500 transition delay-500 duration-300 hover:text-blue-600">this is a sample text</h1>
+</div>
+
+
+
+
+
+
+
+Double media query :
+
+sm:max-md:grid-cols-3
+//it lies between small screen and medium screen
+
+
+
+
+<div class="grid grid-cols-2 gap-3 p-5 sm:max-md:grid-cols-3">
+  <div class="aspect-video max-w-10 bg-purple-400"></div>
+  <div class="aspect-video max-w-10 bg-purple-400"></div>
+  <div class="aspect-video max-w-10 bg-purple-400"></div>
+  <div class="aspect-video max-w-10 bg-purple-400"></div>
+  <div class="aspect-video max-w-10 bg-purple-400"></div>
+  <div class="aspect-video max-w-10 bg-purple-400"></div>
+  <div class="aspect-video max-w-10 bg-purple-400"></div>
+  <div class="aspect-video max-w-10 bg-purple-400"></div>
+</div>
+
+
+
+
+
+
+2.
+We can also use like min-[650]:bg-green-500
+
+
+@apply:
+
+
+
+If we are using external component like chart js or auto complete select, in which we want to make it custom and there we use the custom css.
+
+
+.external_class{
+@apply text-purple-400 bg-blue-400
+}
+
+
+
+
+Reusing css classes:
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-5 bg-violet-500 text-white font-semibold rounded-full shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75;
+  }
+}
+
+
+
+
+//we can use like this: 
+
+
+<button class="btn-primary">
+  Save changes
+</button>
+
+
+
+
+
+Custom Shadow:
+
+
+module.exports = {
+  theme: {
+    extend: {
+      boxShadow: {
+        'myCustom1': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
+          'myCustom2': '0 35px 60px -15px theme('colors.purple.400')',
+
+
+      }
+    }
+  }
+}
+
+
+Clsx:
+
+Conditional Class Names:
+
+import clsx from 'clsx';
+
+
+const buttonClass = clsx('btn', {
+  'btn-primary': isPrimary,
+  'btn-secondary': !isPrimary,
+  'btn-large': isLarge,
+});
+
+
+
+
+Handling Arrays of Class Names: 
+
+const classes = clsx(['btn', isPrimary ? 'btn-primary' : 'btn-secondary']);
+
+
+
